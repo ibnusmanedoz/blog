@@ -1,0 +1,14 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h2>Kindly <a href="{% url 'signup' %}">Register</a> or <a href="{% url 'login' %}">Login</a> to start keeping track of things you are going to do</h2>
+  <br>
+  <h2>Login</h2>
+  <form class="form-group" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-danger">Login</button>
+  </form>
+</div>
+{% endblock %}

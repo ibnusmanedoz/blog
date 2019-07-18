@@ -1,0 +1,39 @@
+{% extends 'todo/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Update Todo
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href='{% static "css/todo.css" %}'>
+<br>
+<div class="container">
+  <div class="row jumbotron">
+    <h1 class="col-sm-12 text-center" style='color:red'>Update Todo</h1>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<form method="post">
+  {% csrf_token%}
+  {{form.as_p}}
+  <input class="btn btn-primary" type="submit" value="Update">
+  <a href="{% url 'homepage' %}">Cancel</a>
+</form>
+</div>
+</div>
+</div>
+<script>
+    $('.datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+</script>
+<script>
+    $('.timepicker').timepicker({
+        uiLibrary: 'bootstrap4'
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+My Todo
+{% endblock %}
+{% block content %}
+<br>
+<div class='container'>
+<div class="row jumbotron">
+<h1 class="col-sm-12 text-center" style='color:red'>My Todos</h1>
+<div class="col-sm-12 text-center"><em><small>Below are list of your current todos</small></em></div>
+</div>
+</div>
+<!-- List out all todo -->
+<br>
+<div class="container">
+  <div class="row">
+    <div class='col-sm-12'>
+      {% for data in todo_list %}
+        <strong><li class="list-group-item" style='color: red;'>{{data.todo_data}} on {{data.when}} by {{data.time}}</strong><br><br>
+          <div class="btn-toolbar"><div class="btn-group mr-2"><form action="{% url 'todo-update' pk=data.pk %}"><button class="btn btn-primary">Update</button></form></div>
+          <div class="btn-group mr-2"><form action="{% url 'todo-delete' pk=data.pk %}"><button class="btn btn-danger">Delete</button></form></div></div>
+        </li> <br>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
